@@ -1,0 +1,69 @@
+#!/bin/bash
+
+cd ../src
+
+# compile the module
+
+make
+ret=$?
+
+if [ $ret != 0 ]
+ then
+	echo -e "\e[00;31m [-] Failed to compile kernel module\e[00m"
+	exit $ret
+fi
+
+echo -e "\e[00;32m [+] Compiled kernel module\e[00m"
+
+# insert the module
+
+sudo /sbin/insmod ./the-drip-dry-carbonite.ko
+ret=$?
+
+if [ $ret != 0 ]
+ then
+	echo -e "\e[00;31m [-] Failed to insert kernel module\e[00m"
+	make clean
+	exit $ret
+fi
+
+echo -e "\e[00;32m [+] Inserted kernel module\e[00m"
+
+# get the major number of the character device and create a special file
+
+major=`cat /proc/command-the-drip-dry-carbonite-major`
+sudo mknod /dev/command-the-drip-dry-carbonite c $major 0
+
+if [ $ret != 0 ]
+ then
+	echo -e "\e[00;31mFailed to create the character device\e[00m"
+	sudo /sbin/rmmod the_drip_dry_carbonite
+	make clean
+	exit $ret
+fi
+
+make clean
+
+# compile the user-space tool
+
+cd ../utils
+make
+
+if [ $ret != 0 ]
+ then
+	echo -e "\e[00;31m [-] Failed to compile trigger-carbonite\e[00m"
+	sudo /sbin/rmmod the_drip_dry_carbonite
+	make clean
+	exit $ret
+fi
+
+echo -e "\e[00;32m [+] Compiled user-space tool (trigger-carbonite)\e[00m"
+
+#copy trigger-carbonite to /usr/bin and /bin
+
+cp trigger-carbonite /usr/bin
+cp trigger-carbonite /bin
+
+echo -e "\e[00;32m [+] Moved trigger-carbonite to /bin and /urs/bin\e[00m"
+
+exit 0

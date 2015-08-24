@@ -1,0 +1,21 @@
+#gedit backups 
+*~
+
+# Vi swap files
+.*.swp
+
+*.tgz
+*.tar.gz
+*.rpm
+
+.*
+!.gitignore
+*.o
+*.o.*
+*.ko
+*.ko.*
+*.mod.c
+*.order
+Module.symvers
+Module.markers
+rpms

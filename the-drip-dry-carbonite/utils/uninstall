@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#remove kernel module
+
+rmmod the-drip-dry-carbonite 2 &> /dev/null
+
+#delete special file
+rm /dev/command-the-drip-dry-carbonite 2 &> /dev/null
+
+#delete trigger-carbonite from /bin and /usr/bin
+
+rm /bin/trigger-carbonite /usr/bin/trigger-carbonite 2 &> /dev/null
+
+echo -e "\e[00;32m [+] the-drip-dry-carbonite was uninstalled successfully\e[00m"
+
