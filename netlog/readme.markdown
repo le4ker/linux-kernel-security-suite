@@ -1,12 +1,6 @@
 # Netlog
 
-Vendor:				CERN
-Author:				Panos Sakkos while at Computer Security Team 
-CST Email:			cert-sec@cern.ch
-Author Email:			<panos.sakkos@cern.ch> 
-License: 			GPLv3
-
-netlog is a Loadable Kernel Module that logs information for every connection on the hosted machine.
+Netlog is a Loadable Kernel Module that logs information for every connection on the hosted machine.
 By utilizing the kprobes API, it probes the connect and accept system calls ,for TCP connections,
 as well as the bind system call, for UDP connections, and the socket destruction. 
 While probing, it logs the process name and process id, the user id that owns this process, the protocol
