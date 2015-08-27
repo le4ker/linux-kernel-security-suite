@@ -1,9 +1,5 @@
 # Dresden
 
-Vendor:				      	CERN
-Author:				      	Panos Sakkos while at Computer Security Team <cert-sec@cern.ch>
-License: 			      	GPLv3
-
 Dresden is a kernel module that will log emergency messages for every attempt of inserting or removing a kernel module.
 Also, it will block the insertion of every kernel module, by replacing the init functio of the (wannabe) incoming module
 with a function crafted for failure. After deploying dresden, you will not be able to remove it. It will delete itself from
