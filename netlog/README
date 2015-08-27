@@ -1,29 +1,10 @@
-					+---------------------------+
-					+           netlog          +        
-					+---------------------------+
+# Netlog
 
-Product name: 			netlog
-Date:				Sep 18 2012
-Version:			1.30
 Vendor:				CERN
 Author:				Panos Sakkos while at Computer Security Team 
 CST Email:			cert-sec@cern.ch
 Author Email:			<panos.sakkos@cern.ch> 
 License: 			GPLv3
-
-					+-------+
-					|License|
-					+-------+
-
-Copyright 2011 CERN. This software is distributed under the terms of the GNU General Public
-Licence version 3 (GPL Version 3), copied verbatim in the file COPYING. In applying this licence,
-CERN does not waive the privileges and immunities granted to it by virtue of its status as an 
-Intergovernmental Organization or submit itself to any jurisdiction.
-
-
-					+-----------+
-					|Description|
-					+-----------+
 
 netlog is a Loadable Kernel Module that logs information for every connection on the hosted machine.
 By utilizing the kprobes API, it probes the connect and accept system calls ,for TCP connections,
@@ -43,9 +24,12 @@ In order to compile the code that tracks the connection close, you need to chang
 symbolic constant (PROBE_CONNECTION_CLOSE) that is defined in the netlog header file (netlog.h) from 
 zero (0) to a non-zero value (i.e. 1) and recompile netlog.
 
-					+----------+
-					|Change Log|
-					+----------+
+# Kernels tested against
+
+2.6.18 up to 3.4.9
+
+# Change Log
+
 1.30
 	*On the fly configuration of the whitelist
 
@@ -58,9 +42,7 @@ zero (0) to a non-zero value (i.e. 1) and recompile netlog.
 1.16
 	*Basic checks on given ip addresses and ports
 	
-					+--------------------+
-					|Dynamic Whitelisting|
-					+--------------------+
+# Dynamic Whitelisting
 
 netlog offers whitelisting of connections at insertion time. This is done by passing parameters to the module.
 The parameter is named connections_to_whitelist and it's an array of strings with the following format:
@@ -88,9 +70,7 @@ If you believe that you will not need whitelisting at all, we recommend you to c
 in order to boost even more its perfomance. In order to not compile the code of whitelisting, change the static constant
 WHITELISTING to 0 in netlog.h file and recompile netlog.
 
-					+-----------------------------------------+
-					|On the fly configuration of the whitelist|
-					+-----------------------------------------+
+# On the fly configuration of the whitelist
 
 The process of whitelisting (described in "Dynamic Whitelisting" section) can be done also while netlog is planted.
 If you want to change the whitelist when netlog is planted, there is no need to remove the module and insert 
@@ -122,9 +102,7 @@ Sep 19 09:57:26 panos-PC kernel: [ 1841.262479] netlog-config:	[+] Whitelisted /
 Sep 19 09:57:26 panos-PC kernel: [ 1841.262483] netlog-config:	[+] Whitelisted /usr/bin/ssh|i<127.0.0.1>
 Sep 19 09:57:26 panos-PC kernel: [ 1841.262486] netlog-config:	[+] Whitelisted /usr/sbin/sshd|i<127.0.0.1>
 
-					+------------------+
-					|Absolute Path Mode|
-					+------------------+
+# Absolute Path Mode
 
 The absolute path mode is activated by passing a non zero value to the absolute_path_mode parameter.
 
@@ -135,14 +113,7 @@ Absolute path mode will log the absolute execution path instead of the process n
 This will be helpfull in case that you want to see the absolute execution path of a connection that
 you want to whitelist.
 
-					+--------------------------+
-					|Supported kernel versions |
-					+--------------------------+
-2.6.18 up to 3.4.9
-
-					+--------------------------+
-					|Format of the log messages|
-					+--------------------------+
+# Format of log messages
 
 TCP connect:
 Dec 19 14:03:17 panos-PC kernel: netlog: http[3206] TCP 137.138.191.167:52507 -> 130.59.10.36:80 (uid=0)
@@ -157,9 +128,7 @@ Dec 19 14:22:50 panos-PC kernel: netlog: skype[4261] UDP bind (any IP address):2
 Connection close:
 Dec 19 14:19:07 panos-PC kernel: netlog: sshd[3755] TCP 137.138.191.167:22 <-> 137.138.32.18:49904 (uid=0)
 
-					+--------------+
-					|How to compile|
-					+--------------+
+# How to use
 
 In the src directory run:
 
@@ -174,25 +143,20 @@ And in order to remove it, run:
 
 	rmmod netlog
 
-					+------------------------------+
-					|Before reading the source code|
-					+------------------------------+
+# Before reading the source code
 
 First of all you have to be experienced with the C language and by experienced I mean at least to
 be familiar with pointers. Also you need to know how the system calls are handled from the Linux Kernel
 and to be familiar with the inet level of the kernel source code. For the last thing, grep is your friend.
 Furthermore you have to know how kprobes works (or at least its API).
 
-					+----------+
-					|References|
-					+----------+
+# License
 
-Linux Source Code:
-	http://www.kernel.org/
+Copyright 2011 CERN. This software is distributed under the terms of the GNU General Public
+Licence version 3 (GPL Version 3), copied verbatim in the file COPYING. In applying this licence,
+CERN does not waive the privileges and immunities granted to it by virtue of its status as an 
+Intergovernmental Organization or submit itself to any jurisdiction.
 
-Kernel instrumentation using kprobes:
-	http://www.phrack.org/issues.html?issue=67&id=6
+# References
 
-Scientific Linux CERN
-	http://linux.web.cern.ch/linux/
-
+[Kernel instrumentation using kprobes](http://www.phrack.org/issues.html?issue=67&id=6)
