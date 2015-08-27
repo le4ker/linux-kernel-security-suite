@@ -137,13 +137,6 @@ And in order to remove it, run:
 
 	rmmod netlog
 
-# Before reading the source code
-
-First of all you have to be experienced with the C language and by experienced I mean at least to
-be familiar with pointers. Also you need to know how the system calls are handled from the Linux Kernel
-and to be familiar with the inet level of the kernel source code. For the last thing, grep is your friend.
-Furthermore you have to know how kprobes works (or at least its API).
-
 # License
 
 Copyright 2011 CERN. This software is distributed under the terms of the GNU General Public
