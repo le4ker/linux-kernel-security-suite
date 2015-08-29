@@ -1,3 +1,0 @@
-# Linux Kernel Security Suite
-
-
