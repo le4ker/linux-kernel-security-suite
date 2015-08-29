@@ -1,4 +1,4 @@
-the-drip-dry-carbonite
+The Drip Dry Carbonite
 ======================
 
 Description
@@ -7,7 +7,7 @@ Description
 Security extensions for the linux kernel, as described in "FORENSICS: Loadable Kernel Modules"
 article, by Keith J. Jones at the MAGAZINE OF USENIX & SAGE. The current project merges the 2
 suggested tools in a kernel module that is compatible with the modern versions of the linux kernel
-and will also incorporates some modern security mechanisms. 
+and will also incorporates some modern security mechanisms.
 
 Project for the master course "Advanced Operating Systems", instructed by Mema Rousopoulos <http://cgi.di.uoa.gr/~mema/>
 
@@ -15,8 +15,8 @@ Project for the master course "Advanced Operating Systems", instructed by Mema R
 
 the-drip-dry-carbonite registers timer interrupts in order to verify the integrity of the
 system call table and gets notified after a module event in order to monitor the system call table
-after an insertion of a kernel module. The interval between the interrupts can be specified as a 
-parameter of the module and the default value is every second. If a change in the hash of the system 
+after an insertion of a kernel module. The interval between the interrupts can be specified as a
+parameter of the module and the default value is every second. If a change in the hash of the system
 call table is detected, a critical log will be logged and carbonite functionality will be triggered.
 
 #### Tuning the monitoring
@@ -24,14 +24,14 @@ call table is detected, a critical log will be logged and carbonite functionalit
 You can set the interval between the monitoring of the hash of the system call table, by setting the
 sys_call_table_check_interval parameter while inserting the module. Default value is every 1 second.
 
-You can also disable the monitoring of the system call table, by the setting sys_call_table_monitoring 
+You can also disable the monitoring of the system call table, by the setting sys_call_table_monitoring
 parameter of the module to 0. Default value is to monitor the system call table.
 
 ### Carbonite
 
 By executing trigger-carbonite you will command the kernel module to freeze the system and take
-a snapshot of each process. Then you will be able to see the snapshot by reading the 
-/proc/the-drip-dry-carbonite-dump file. Carbonite functionality should be used by a system administrator, 
+a snapshot of each process. Then you will be able to see the snapshot by reading the
+/proc/the-drip-dry-carbonite-dump file. Carbonite functionality should be used by a system administrator,
 in order to dump the state of the system and perform forensics on this data.
 The carbonite symbol is exported in order to be used by other kernel modules, i.e. by security modules that
 detected an incident and they want to get a dump of the system's processes.
@@ -39,8 +39,8 @@ detected an incident and they want to get a dump of the system's processes.
 #### Remote logging
 
 You can enable remote logging in order to instruct the-drip-dry-carbonite to send a backup of its carbonite logs to
-a syslog server. In order to enable the remote logging, you need to specify the IP address of the syslog server as a 
-parameter (remote_log_ip) to the module while inserting it. 
+a syslog server. In order to enable the remote logging, you need to specify the IP address of the syslog server as a
+parameter (remote_log_ip) to the module while inserting it.
 
 #### Stealth mode
 
@@ -111,7 +111,7 @@ Enviroment variables, arguments, open files, executable
 Security extensions for the linux kernel, as described in "FORENSICS: Loadable Kernel Modules"
 article, by Keith J. Jones at the MAGAZINE OF USENIX & SAGE. The current project merges the 2
 suggested tools in a kernel module that is compatible with the modern versions of the linux kernel
-and will also incorporates some modern security mechanisms. 
+and will also incorporates some modern security mechanisms.
 
 Project for the master course "Advanced Operating Systems", instructed by Mema Rousopoulos <http://cgi.di.uoa.gr/~mema/>
 
