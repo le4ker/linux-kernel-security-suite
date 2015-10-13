@@ -14,3 +14,7 @@ Dresden blocks all the attempts to insert modules in the kernel. In case of atte
 ## Netlog
 
 Logs all network communication by probing the inet stack of the kernel.
+
+# Supporting the repo
+
+In case you want to support the development, feel free to send a few bits here 1WT5h5JNmRDnyLAzqbreh358EcYeCy5hd
