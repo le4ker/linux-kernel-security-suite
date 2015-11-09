@@ -1,5 +1,7 @@
 # Linux Kernel Security Suite
 
+[![Join the chat at https://gitter.im/PanosSakkos/linux-kernel-security-suite](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/PanosSakkos/linux-kernel-security-suite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A collection of three tools that are designed to protect linux from rootkits.
 
 ## The Drip Dry Carbonite
